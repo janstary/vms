@@ -41,7 +41,7 @@ An example run of `vms` can be seen with `make test`:
 ./vms -j 2 db.xyz request.excited  ./excited
 ```
 
-The `single` request instructs ORCA to un the relatively cheap
+The `single` request instructs ORCA to run the relatively cheap
 single point calculations on the molecules. This is a test that
 `vms` basicaly works. Look into the resulting `./single` directory.
 
