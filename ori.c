@@ -414,7 +414,7 @@ bad:
 	return 0;
 }
 
-/* Discover the molecules which satisfy the absorbtion criteria.
+/* Discover the molecules which satisfy the absorption criteria.
  * Return the number of molecules passing the inequalities. */
 unsigned
 filter_absorb()

@@ -50,7 +50,7 @@ Note the modified geometry in `./optimize/output`, optimized from the
 naive structure of H2O and CH4 in `db.xyz`.
 
 The `excited` request instructs ORCA to compute excited states,
-in order to figure out the absorbption of light:
+in order to figure out the absorption of light:
 
 ```
 absorb 300 500 0.100 -1.00 -1
