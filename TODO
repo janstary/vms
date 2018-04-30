@@ -1,0 +1,72 @@
+Everything breaks with ORCA 4.0.1:
+  ori: 'CARTESIAN COORDINATES (ANGSTROEM)'
+  not found in ./excited/molecule.000001
+  ori: no excited states in './excited/molecule.000001'
+  ori: number of states 0 != 1 state for root 3 in './excited/molecule.000001'
+  ori: 'CARTESIAN COORDINATES (ANGSTROEM)'
+  not found in ./excited/molecule.000002
+  ori: no excited states in './excited/molecule.000002'
+  ori: number of states 0 != 1 state for root 3 in './excited/molecule.000002'
+
+ori /tmp/single
+ori /tmp/optimize
+ori /tmp/excited
+	Document the different functionality and different output in ori.1
+
+ori
+	needs to have a -q mode where it _only_
+	writes molecules to stdout and eval to stderr,
+	to e used by mm(1)
+
+test molecule in vms
+	have  small molecule to test first if the method + basis
+	is reasonable at all, as opposed to failing a thousand times
+
+maxdim,iroot,triplets
+	undocummented
+
+molecule names
+	Name the molecules as "%m-%b-molecule.%d" by default,
+	or let the user say "names string" to have string.*
+	(see streams.c in recall, _fmtsname())
+
+filter inbetween ORCAs
+	"ori ... file" as opposed to "ori ... dir"
+	means check the one molecule, and return yes/no
+	with respect to filters
+	Then make vms -D delete the bad ones immediately
+	(to save possibly huge space in the orcadir)
+
+globals
+	The request and molecules and havemols etc are global now,
+	but that could be avoided
+
+realloc()
+	replace with the safer reallocarray()
+
+atoi/strtol
+	replace with the safer strtonum()
+
+request:
+	https://sites.google.com/site/orcainputlibrary/generalinput
+	https://sites.google.com/site/orcainputlibrary/excited-state-calculations/tddft
+
+methods:
+	Try HF-3C as well, without specifying a basis set.
+	Try other relevant methods
+
+ori parallelization?
+	How expensive is ori with respect to the whole?
+	If the overhead is substantial should we have ori -j too?
+
+parser:
+	basis set can be a multiword
+	implement $ escape for direct-to-orca, as in
+		$ %tddft
+		$  maxdim 30
+		$  end
+
+portability:
+	Test on all MacOSX (64bit) and Linux (64bit)
+	https://orcaforum.cec.mpg.de/downloads.php?cat=9
+	ORCA runs on no other POSIX platforms.

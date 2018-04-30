@@ -1,0 +1,252 @@
+.Dd April 29, 2018
+.Dt ORT 1
+.Os
+.Sh NAME
+.Nm ort
+.Nd ORCA request translator
+.Sh SYNOPSIS
+.Nm
+.Ar request
+.Op Ar molecule
+.Sh DESCRIPTION
+.Nm
+is a companion to
+.Xr vms 1 .
+It reads the user's request in a format specified below
+and translates it into actual ORCA commands.
+The request can also specify filters,
+to express which molecules the user is interested in.
+.Pp
+The first argument to
+.Nm
+is the request to be parsed.
+If there are no more arguments,
+the appropriate ORCA instructions are written to standard output.
+If a second argument is named,
+.Nm
+expects an XYZ description of atoms of a molecule.
+The molecule's charge and multiplicity, possibly modified by the
+.Ar request ,
+are reported to standard output.
+.Ss The request format
+The request consists of lines of text.
+Each line starts with one of the following keywords,
+followed by paramaters.
+.Pp
+.Bl -tag -width methodxx -compact
+.It Ic job
+.Ar jobname
+.It Ic memory
+.Ar mbytes
+.It Ic method
+.Ar method
+.It Ic basis
+.Ar basis
+.It Ic nroots
+.Ar number
+.It Ic maxdim
+.Ar number
+.It Ic iroot
+.Ar number
+.It Ic triplets
+.It Ic charge
+.Ar number
+.It Ic multi
+.Ar even odd
+.It Ic nbest
+.Ar number
+.El
+.Pp
+.Ic job
+specifies what ORCA is to compute.
+It is an error if the job is not specified.
+Currently, the
+.Ar jobname
+can be:
+.Pp
+.Bl -tag -width optimize -compact
+.It Cm single
+perform the cheap single point calculations
+.It Cm optimize
+compute the molecule's optimized geometry
+.It Cm excited
+compute the molecule's excited states
+.El
+.Pp
+.Ic memory
+specifies the amount of memory, in megabytes,
+which a single ORCA job is allowed to use.
+This can speed up ORCA considerably.
+Obviously, the sum must not exceed the machine's resources
+or the user's
+.Xr ulimit 3 .
+The default is 1024.
+.Pp
+.Ic method
+and
+.Ic basis
+specify the computation method and basis set as recognized by ORCA.
+Specifying the basis is not mandatory, ORCA provides sensible defaults.
+However, it is an error if the method is not specified.
+.Pp
+.Ic nroots
+specifies how many excited states we want ORCA to compute in an
+.Ic excited
+job.
+It is an error if
+.Ic nroots
+is not specified in that case.
+.Pp
+.Ic maxdim
+specifies allowed disk space in an
+.Ic excited
+job.
+.Pp
+.Ic triplets
+turns on triplet excited state in an
+.Ic excited
+job.
+.Pp
+.Ic iroot
+specifies an eletronic state we want to optimize or absorb with.
+.Pp
+.Ic charge
+gives the molecules an electric charge.
+By default, the charge is zero;
+a value of -1 means an aniont with a charge of one electron, etc.
+.Pp
+.Ic multi
+modifies the spin multiplicity of the molecules.
+By default, a molecule has multiplicity 1 or 2,
+depending on whether it has an even or odd number of electrons, respectively.
+The
+.Ic multi
+directive makes that
+.Ar even
+and
+.Ar odd
+instead of 1 and 2.
+For example,
+.Ic multi Ar 3 2
+uses triplets.
+.Pp
+.Ic nbest
+specifies the number of
+.Dq best
+molecules reported which pass the user's filters.
+Currently, only the following filter is recognized:
+.Pp
+.Bl -tag -width optimize -compact
+.It Ic absorb Ar lolen Ar hilen Ar loint Ar hiint Op Ar best
+.El
+.Pp
+The
+.Ic absorb
+filter is only relevant for an
+.Ic excited
+job.
+It selects the molecules which satisfy
+certain conditions on absorption of light,
+specified by the
+.Ic absorb
+parameters as follows.
+The
+.Ar lolen
+and
+.Ar hilen
+parameters specify a range of wavelengths.
+The
+.Ar loint
+an
+.Ar hiint
+parameters specify a range of light absorption intensity.
+Typically, these are numbers between 0 and 1 which
+correspond to the probability of a photon being absorbed, but
+.Ar hiint
+can occasionaly be higher than 1.
+A negative value of
+.Ar hiint
+means the absorption intesity is not bounded from above.
+.Pp
+There can be more than one
+.Ar absorb
+specification.
+A molecule passes the filter if it satisfies each of the
+.Ar absorb
+specifications with at least one of its excited states.
+.Pp
+The optional
+.Ar best
+parameter specifies what molecules does the user consider
+.Dq best
+in this respect.
+The value of
+.Ar best
+is a real number, meaning that the best molecules are those with
+absorption intensity closest to the given number.
+By default, the middle of the range is best.
+A value of -1 means maximal absorption intensity that occured
+among the molecules, which of course is not known beforehand.
+Similarly, a value of -2 means middle of the intensity interval,
+whatever it turns out to be.
+.Sh EXAMPLES
+Request a computation of light absorption aiming for molecules which
+absorb between 40% and 60% of energy carried by wavelengths
+between 400 and 600 nanometers, the closer to 50% the better.
+Turn singlets into triplets, charge every molecule with one electron.
+Compute the first ten excited states for each molecule.
+.Bd -literal
+$ cat request.excited
+job	excited
+method	BP86
+basis	def2-SV(P)
+charge	-1
+multi	3 2
+nroots	10
+absorb	400 600 0.4 0.6
+
+$ ort request.excited
+!BP86 def2-SV(P) miniprint
+%maxcore 1024
+%tddft
+ nroots 10
+ maxdim 100
+  end
+.Ed
+.Pp
+This is how the absorb line would look when aiming for molecules
+which absorb as little (or as much, respectively) red light as possible:
+.Pp
+.Dl absorb 650 700 0.0 0.1 0.0
+.Dl absorb 650 700 0 -1 -1
+.Pp
+Display the charge and multiplicity of a molecule
+tweaked by the request:
+.Bd -literal
+$ cat /tmp/atoms.xyz
+Cl         1.64640       -0.71100        0.13750
+Cl        -1.64630       -0.71110       -0.13750
+C          0.68360        0.71110       -0.33100
+C         -0.68370        0.71110        0.33100
+H          0.59570        0.70930       -1.42200
+H          1.24730        1.60070       -0.03540
+H         -1.24750        1.60070        0.03540
+H         -0.59580        0.70940        1.42190
+
+$ cat request.single
+job     single
+method  BP86
+basis   def2-SV(P)
+memory  2048
+multi   3 2
+charge  -1
+
+$ ort request.single /tmp/one.xyz
+-1 2
+.Ed
+.Sh SEE ALSO
+.Xr vms 1
+.Sh AUTHORS
+.An Jonatan Matějka Aq Mt jonatan1024@gmail.com
+.An Štěpán Sršeň Aq Mt srsen.stepan@gmail.com
+.An Jan Starý Aq Mt hans@stare.cz

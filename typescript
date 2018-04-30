@@ -1,0 +1,1273 @@
+hans@fitbook:vms$ rm /tmp/single/*sh -x ./vms -f 11 -l 14 -j 2 db.xyz request.single /tmp/single//
++ O=0
++ M=1
++ F=1
++ L=0
++ A=0
++ D=0
++ J=1
++ W=0
++ getopts adf:hj:l:t:wq opt
++ case $opt in
++ F=11
++ O=2
++ getopts adf:hj:l:t:wq opt
++ case $opt in
++ L=14
++ O=4
++ getopts adf:hj:l:t:wq opt
++ case $opt in
++ J=2
++ O=6
++ getopts adf:hj:l:t:wq opt
++ test 11 -ge 1
++ test 14 -ge 0
++ test 14 -gt 0 -a 11 -gt 14
++ shift 6
++ test 3 -ne 3
++ MOLECDB=db.xyz
++ REQUEST=request.single
++ SAVEDIR=/tmp/single/
++ test -f db.xyz -a -r db.xyz
++ test -f request.single -a -r request.single
++ test -e /tmp/single//input
++ test -e /tmp/single//request
++ test -d /tmp/single/
++ touch /tmp/single//.22478
++ rm -f /tmp/single//.22478
++ test -z
++ TEMPDIR=/var/folders/4l/p3g0l0bn0bqdsrnwx9q1rwth0000gn/T/
++ test -z /var/folders/4l/p3g0l0bn0bqdsrnwx9q1rwth0000gn/T/
++ test -d /var/folders/4l/p3g0l0bn0bqdsrnwx9q1rwth0000gn/T/
++ touch /var/folders/4l/p3g0l0bn0bqdsrnwx9q1rwth0000gn/T//.22478
++ rm -f /var/folders/4l/p3g0l0bn0bqdsrnwx9q1rwth0000gn/T//.22478
+++ dirname ./vms
++ export PATH=.:/Users/hans/bin:/Users/hans/sbin:/usr/local/sbin:/usr/local/bin:/opt/local/sbin:/opt/local/bin:/Users/hans/bin:/Users/hans/sbin:/usr/local/sbin:/usr/local/bin:/opt/local/sbin:/opt/local/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/hans/Library/Orca:/Users/hans/Library/Orca401:/Users/hans/Library/Orca:/Users/hans/Library/Orca401
++ PATH=.:/Users/hans/bin:/Users/hans/sbin:/usr/local/sbin:/usr/local/bin:/opt/local/sbin:/opt/local/bin:/Users/hans/bin:/Users/hans/sbin:/usr/local/sbin:/usr/local/bin:/opt/local/sbin:/opt/local/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/hans/Library/Orca:/Users/hans/Library/Orca401:/Users/hans/Library/Orca:/Users/hans/Library/Orca401
+++ which orca
++ ORC=/Users/hans/Library/Orca/orca
+++ which ort
++ ORT=./ort
+++ which ori
++ ORI=./ori
+++ mktemp /var/folders/4l/p3g0l0bn0bqdsrnwx9q1rwth0000gn/T//obase.22478.XXXXXX
++ OBASE=/var/folders/4l/p3g0l0bn0bqdsrnwx9q1rwth0000gn/T//obase.22478.Oc8pRp
++ trap 'rm -f $OBASE $TEMPDIR/input_$$_*_* $TEMPDIR/atoms_$$_*_*' EXIT
++ trap 'jobs -p | xargs kill ; exit 1 ;' TERM INT
++ ./ort request.single
++ cp request.single /tmp/single//request
++ REQUEST=/tmp/single//request
++ cp db.xyz /tmp/single//input.xyz
++ MOLECDB=/tmp/single//input.xyz
++ test 14 -eq 0 -o 1 -le 14
++ test 1 -lt 11
++ skipmol
++ l=1
++ read numatom
++ read comment
++ test 1 -le 31
++ read atom
++ l=2
++ test 2 -le 31
++ read atom
++ l=3
++ test 3 -le 31
++ read atom
++ l=4
++ test 4 -le 31
++ read atom
++ l=5
++ test 5 -le 31
++ read atom
++ l=6
++ test 6 -le 31
++ read atom
++ l=7
++ test 7 -le 31
++ read atom
++ l=8
++ test 8 -le 31
++ read atom
++ l=9
++ test 9 -le 31
++ read atom
++ l=10
++ test 10 -le 31
++ read atom
++ l=11
++ test 11 -le 31
++ read atom
++ l=12
++ test 12 -le 31
++ read atom
++ l=13
++ test 13 -le 31
++ read atom
++ l=14
++ test 14 -le 31
++ read atom
++ l=15
++ test 15 -le 31
++ read atom
++ l=16
++ test 16 -le 31
++ read atom
++ l=17
++ test 17 -le 31
++ read atom
++ l=18
++ test 18 -le 31
++ read atom
++ l=19
++ test 19 -le 31
++ read atom
++ l=20
++ test 20 -le 31
++ read atom
++ l=21
++ test 21 -le 31
++ read atom
++ l=22
++ test 22 -le 31
++ read atom
++ l=23
++ test 23 -le 31
++ read atom
++ l=24
++ test 24 -le 31
++ read atom
++ l=25
++ test 25 -le 31
++ read atom
++ l=26
++ test 26 -le 31
++ read atom
++ l=27
++ test 27 -le 31
++ read atom
++ l=28
++ test 28 -le 31
++ read atom
++ l=29
++ test 29 -le 31
++ read atom
++ l=30
++ test 30 -le 31
++ read atom
++ l=31
++ test 31 -le 31
++ read atom
++ l=32
++ test 32 -le 31
++ M=2
++ continue
++ test 14 -eq 0 -o 2 -le 14
++ test 2 -lt 11
++ skipmol
++ l=1
++ read numatom
++ read comment
++ test 1 -le 32
++ read atom
++ l=2
++ test 2 -le 32
++ read atom
++ l=3
++ test 3 -le 32
++ read atom
++ l=4
++ test 4 -le 32
++ read atom
++ l=5
++ test 5 -le 32
++ read atom
++ l=6
++ test 6 -le 32
++ read atom
++ l=7
++ test 7 -le 32
++ read atom
++ l=8
++ test 8 -le 32
++ read atom
++ l=9
++ test 9 -le 32
++ read atom
++ l=10
++ test 10 -le 32
++ read atom
++ l=11
++ test 11 -le 32
++ read atom
++ l=12
++ test 12 -le 32
++ read atom
++ l=13
++ test 13 -le 32
++ read atom
++ l=14
++ test 14 -le 32
++ read atom
++ l=15
++ test 15 -le 32
++ read atom
++ l=16
++ test 16 -le 32
++ read atom
++ l=17
++ test 17 -le 32
++ read atom
++ l=18
++ test 18 -le 32
++ read atom
++ l=19
++ test 19 -le 32
++ read atom
++ l=20
++ test 20 -le 32
++ read atom
++ l=21
++ test 21 -le 32
++ read atom
++ l=22
++ test 22 -le 32
++ read atom
++ l=23
++ test 23 -le 32
++ read atom
++ l=24
++ test 24 -le 32
++ read atom
++ l=25
++ test 25 -le 32
++ read atom
++ l=26
++ test 26 -le 32
++ read atom
++ l=27
++ test 27 -le 32
++ read atom
++ l=28
++ test 28 -le 32
++ read atom
++ l=29
++ test 29 -le 32
++ read atom
++ l=30
++ test 30 -le 32
++ read atom
++ l=31
++ test 31 -le 32
++ read atom
++ l=32
++ test 32 -le 32
++ read atom
++ l=33
++ test 33 -le 32
++ M=3
++ continue
++ test 14 -eq 0 -o 3 -le 14
++ test 3 -lt 11
++ skipmol
++ l=1
++ read numatom
++ read comment
++ test 1 -le 19
++ read atom
++ l=2
++ test 2 -le 19
++ read atom
++ l=3
++ test 3 -le 19
++ read atom
++ l=4
++ test 4 -le 19
++ read atom
++ l=5
++ test 5 -le 19
++ read atom
++ l=6
++ test 6 -le 19
++ read atom
++ l=7
++ test 7 -le 19
++ read atom
++ l=8
++ test 8 -le 19
++ read atom
++ l=9
++ test 9 -le 19
++ read atom
++ l=10
++ test 10 -le 19
++ read atom
++ l=11
++ test 11 -le 19
++ read atom
++ l=12
++ test 12 -le 19
++ read atom
++ l=13
++ test 13 -le 19
++ read atom
++ l=14
++ test 14 -le 19
++ read atom
++ l=15
++ test 15 -le 19
++ read atom
++ l=16
++ test 16 -le 19
++ read atom
++ l=17
++ test 17 -le 19
++ read atom
++ l=18
++ test 18 -le 19
++ read atom
++ l=19
++ test 19 -le 19
++ read atom
++ l=20
++ test 20 -le 19
++ M=4
++ continue
++ test 14 -eq 0 -o 4 -le 14
++ test 4 -lt 11
++ skipmol
++ l=1
++ read numatom
++ read comment
++ test 1 -le 14
++ read atom
++ l=2
++ test 2 -le 14
++ read atom
++ l=3
++ test 3 -le 14
++ read atom
++ l=4
++ test 4 -le 14
++ read atom
++ l=5
++ test 5 -le 14
++ read atom
++ l=6
++ test 6 -le 14
++ read atom
++ l=7
++ test 7 -le 14
++ read atom
++ l=8
++ test 8 -le 14
++ read atom
++ l=9
++ test 9 -le 14
++ read atom
++ l=10
++ test 10 -le 14
++ read atom
++ l=11
++ test 11 -le 14
++ read atom
++ l=12
++ test 12 -le 14
++ read atom
++ l=13
++ test 13 -le 14
++ read atom
++ l=14
++ test 14 -le 14
++ read atom
++ l=15
++ test 15 -le 14
++ M=5
++ continue
++ test 14 -eq 0 -o 5 -le 14
++ test 5 -lt 11
++ skipmol
++ l=1
++ read numatom
++ read comment
++ test 1 -le 18
++ read atom
++ l=2
++ test 2 -le 18
++ read atom
++ l=3
++ test 3 -le 18
++ read atom
++ l=4
++ test 4 -le 18
++ read atom
++ l=5
++ test 5 -le 18
++ read atom
++ l=6
++ test 6 -le 18
++ read atom
++ l=7
++ test 7 -le 18
++ read atom
++ l=8
++ test 8 -le 18
++ read atom
++ l=9
++ test 9 -le 18
++ read atom
++ l=10
++ test 10 -le 18
++ read atom
++ l=11
++ test 11 -le 18
++ read atom
++ l=12
++ test 12 -le 18
++ read atom
++ l=13
++ test 13 -le 18
++ read atom
++ l=14
++ test 14 -le 18
++ read atom
++ l=15
++ test 15 -le 18
++ read atom
++ l=16
++ test 16 -le 18
++ read atom
++ l=17
++ test 17 -le 18
++ read atom
++ l=18
++ test 18 -le 18
++ read atom
++ l=19
++ test 19 -le 18
++ M=6
++ continue
++ test 14 -eq 0 -o 6 -le 14
++ test 6 -lt 11
++ skipmol
++ l=1
++ read numatom
++ read comment
++ test 1 -le 16
++ read atom
++ l=2
++ test 2 -le 16
++ read atom
++ l=3
++ test 3 -le 16
++ read atom
++ l=4
++ test 4 -le 16
++ read atom
++ l=5
++ test 5 -le 16
++ read atom
++ l=6
++ test 6 -le 16
++ read atom
++ l=7
++ test 7 -le 16
++ read atom
++ l=8
++ test 8 -le 16
++ read atom
++ l=9
++ test 9 -le 16
++ read atom
++ l=10
++ test 10 -le 16
++ read atom
++ l=11
++ test 11 -le 16
++ read atom
++ l=12
++ test 12 -le 16
++ read atom
++ l=13
++ test 13 -le 16
++ read atom
++ l=14
++ test 14 -le 16
++ read atom
++ l=15
++ test 15 -le 16
++ read atom
++ l=16
++ test 16 -le 16
++ read atom
++ l=17
++ test 17 -le 16
++ M=7
++ continue
++ test 14 -eq 0 -o 7 -le 14
++ test 7 -lt 11
++ skipmol
++ l=1
++ read numatom
++ read comment
++ test 1 -le 21
++ read atom
++ l=2
++ test 2 -le 21
++ read atom
++ l=3
++ test 3 -le 21
++ read atom
++ l=4
++ test 4 -le 21
++ read atom
++ l=5
++ test 5 -le 21
++ read atom
++ l=6
++ test 6 -le 21
++ read atom
++ l=7
++ test 7 -le 21
++ read atom
++ l=8
++ test 8 -le 21
++ read atom
++ l=9
++ test 9 -le 21
++ read atom
++ l=10
++ test 10 -le 21
++ read atom
++ l=11
++ test 11 -le 21
++ read atom
++ l=12
++ test 12 -le 21
++ read atom
++ l=13
++ test 13 -le 21
++ read atom
++ l=14
++ test 14 -le 21
++ read atom
++ l=15
++ test 15 -le 21
++ read atom
++ l=16
++ test 16 -le 21
++ read atom
++ l=17
++ test 17 -le 21
++ read atom
++ l=18
++ test 18 -le 21
++ read atom
++ l=19
++ test 19 -le 21
++ read atom
++ l=20
++ test 20 -le 21
++ read atom
++ l=21
++ test 21 -le 21
++ read atom
++ l=22
++ test 22 -le 21
++ M=8
++ continue
++ test 14 -eq 0 -o 8 -le 14
++ test 8 -lt 11
++ skipmol
++ l=1
++ read numatom
++ read comment
++ test 1 -le 22
++ read atom
++ l=2
++ test 2 -le 22
++ read atom
++ l=3
++ test 3 -le 22
++ read atom
++ l=4
++ test 4 -le 22
++ read atom
++ l=5
++ test 5 -le 22
++ read atom
++ l=6
++ test 6 -le 22
++ read atom
++ l=7
++ test 7 -le 22
++ read atom
++ l=8
++ test 8 -le 22
++ read atom
++ l=9
++ test 9 -le 22
++ read atom
++ l=10
++ test 10 -le 22
++ read atom
++ l=11
++ test 11 -le 22
++ read atom
++ l=12
++ test 12 -le 22
++ read atom
++ l=13
++ test 13 -le 22
++ read atom
++ l=14
++ test 14 -le 22
++ read atom
++ l=15
++ test 15 -le 22
++ read atom
++ l=16
++ test 16 -le 22
++ read atom
++ l=17
++ test 17 -le 22
++ read atom
++ l=18
++ test 18 -le 22
++ read atom
++ l=19
++ test 19 -le 22
++ read atom
++ l=20
++ test 20 -le 22
++ read atom
++ l=21
++ test 21 -le 22
++ read atom
++ l=22
++ test 22 -le 22
++ read atom
++ l=23
++ test 23 -le 22
++ M=9
++ continue
++ test 14 -eq 0 -o 9 -le 14
++ test 9 -lt 11
++ skipmol
++ l=1
++ read numatom
++ read comment
++ test 1 -le 29
++ read atom
++ l=2
++ test 2 -le 29
++ read atom
++ l=3
++ test 3 -le 29
++ read atom
++ l=4
++ test 4 -le 29
++ read atom
++ l=5
++ test 5 -le 29
++ read atom
++ l=6
++ test 6 -le 29
++ read atom
++ l=7
++ test 7 -le 29
++ read atom
++ l=8
++ test 8 -le 29
++ read atom
++ l=9
++ test 9 -le 29
++ read atom
++ l=10
++ test 10 -le 29
++ read atom
++ l=11
++ test 11 -le 29
++ read atom
++ l=12
++ test 12 -le 29
++ read atom
++ l=13
++ test 13 -le 29
++ read atom
++ l=14
++ test 14 -le 29
++ read atom
++ l=15
++ test 15 -le 29
++ read atom
++ l=16
++ test 16 -le 29
++ read atom
++ l=17
++ test 17 -le 29
++ read atom
++ l=18
++ test 18 -le 29
++ read atom
++ l=19
++ test 19 -le 29
++ read atom
++ l=20
++ test 20 -le 29
++ read atom
++ l=21
++ test 21 -le 29
++ read atom
++ l=22
++ test 22 -le 29
++ read atom
++ l=23
++ test 23 -le 29
++ read atom
++ l=24
++ test 24 -le 29
++ read atom
++ l=25
++ test 25 -le 29
++ read atom
++ l=26
++ test 26 -le 29
++ read atom
++ l=27
++ test 27 -le 29
++ read atom
++ l=28
++ test 28 -le 29
++ read atom
++ l=29
++ test 29 -le 29
++ read atom
++ l=30
++ test 30 -le 29
++ M=10
++ continue
++ test 14 -eq 0 -o 10 -le 14
++ test 10 -lt 11
++ skipmol
++ l=1
++ read numatom
++ read comment
++ test 1 -le 57
++ read atom
++ l=2
++ test 2 -le 57
++ read atom
++ l=3
++ test 3 -le 57
++ read atom
++ l=4
++ test 4 -le 57
++ read atom
++ l=5
++ test 5 -le 57
++ read atom
++ l=6
++ test 6 -le 57
++ read atom
++ l=7
++ test 7 -le 57
++ read atom
++ l=8
++ test 8 -le 57
++ read atom
++ l=9
++ test 9 -le 57
++ read atom
++ l=10
++ test 10 -le 57
++ read atom
++ l=11
++ test 11 -le 57
++ read atom
++ l=12
++ test 12 -le 57
++ read atom
++ l=13
++ test 13 -le 57
++ read atom
++ l=14
++ test 14 -le 57
++ read atom
++ l=15
++ test 15 -le 57
++ read atom
++ l=16
++ test 16 -le 57
++ read atom
++ l=17
++ test 17 -le 57
++ read atom
++ l=18
++ test 18 -le 57
++ read atom
++ l=19
++ test 19 -le 57
++ read atom
++ l=20
++ test 20 -le 57
++ read atom
++ l=21
++ test 21 -le 57
++ read atom
++ l=22
++ test 22 -le 57
++ read atom
++ l=23
++ test 23 -le 57
++ read atom
++ l=24
++ test 24 -le 57
++ read atom
++ l=25
++ test 25 -le 57
++ read atom
++ l=26
++ test 26 -le 57
++ read atom
++ l=27
++ test 27 -le 57
++ read atom
++ l=28
++ test 28 -le 57
++ read atom
++ l=29
++ test 29 -le 57
++ read atom
++ l=30
++ test 30 -le 57
++ read atom
++ l=31
++ test 31 -le 57
++ read atom
++ l=32
++ test 32 -le 57
++ read atom
++ l=33
++ test 33 -le 57
++ read atom
++ l=34
++ test 34 -le 57
++ read atom
++ l=35
++ test 35 -le 57
++ read atom
++ l=36
++ test 36 -le 57
++ read atom
++ l=37
++ test 37 -le 57
++ read atom
++ l=38
++ test 38 -le 57
++ read atom
++ l=39
++ test 39 -le 57
++ read atom
++ l=40
++ test 40 -le 57
++ read atom
++ l=41
++ test 41 -le 57
++ read atom
++ l=42
++ test 42 -le 57
++ read atom
++ l=43
++ test 43 -le 57
++ read atom
++ l=44
++ test 44 -le 57
++ read atom
++ l=45
++ test 45 -le 57
++ read atom
++ l=46
++ test 46 -le 57
++ read atom
++ l=47
++ test 47 -le 57
++ read atom
++ l=48
++ test 48 -le 57
++ read atom
++ l=49
++ test 49 -le 57
++ read atom
++ l=50
++ test 50 -le 57
++ read atom
++ l=51
++ test 51 -le 57
++ read atom
++ l=52
++ test 52 -le 57
++ read atom
++ l=53
++ test 53 -le 57
++ read atom
++ l=54
++ test 54 -le 57
++ read atom
++ l=55
++ test 55 -le 57
++ read atom
++ l=56
++ test 56 -le 57
++ read atom
++ l=57
++ test 57 -le 57
++ read atom
++ l=58
++ test 58 -le 57
++ M=11
++ continue
++ test 14 -eq 0 -o 11 -le 14
++ test 11 -lt 11
+++ jobs -pr
+++ wc -l
++ test 0 -ge 2
+++ mktemp /var/folders/4l/p3g0l0bn0bqdsrnwx9q1rwth0000gn/T//input_22478_11_XXXXXX
++ INPUT=/var/folders/4l/p3g0l0bn0bqdsrnwx9q1rwth0000gn/T//input_22478_11_h99Ks6
+++ mktemp /var/folders/4l/p3g0l0bn0bqdsrnwx9q1rwth0000gn/T//atoms_22478_11_XXXXXX
++ ATOMS=/var/folders/4l/p3g0l0bn0bqdsrnwx9q1rwth0000gn/T//atoms_22478_11_KBeWpI
++ nextmol /var/folders/4l/p3g0l0bn0bqdsrnwx9q1rwth0000gn/T//atoms_22478_11_KBeWpI
++ l=1
++ read numatom
++ read comment
++ test 1 -le 8
++ read atom
++ echo 'Cl         1.64640       -0.71100        0.13750'
++ l=2
++ test 2 -le 8
++ read atom
++ echo 'Cl        -1.64630       -0.71110       -0.13750'
++ l=3
++ test 3 -le 8
++ read atom
++ echo 'C          0.68360        0.71110       -0.33100'
++ l=4
++ test 4 -le 8
++ read atom
++ echo 'C         -0.68370        0.71110        0.33100'
++ l=5
++ test 5 -le 8
++ read atom
++ echo 'H          0.59570        0.70930       -1.42200'
++ l=6
++ test 6 -le 8
++ read atom
++ echo 'H          1.24730        1.60070       -0.03540'
++ l=7
++ test 7 -le 8
++ read atom
++ echo 'H         -1.24750        1.60070        0.03540'
++ l=8
++ test 8 -le 8
++ read atom
++ echo 'H         -0.59580        0.70940        1.42190'
++ l=9
++ test 9 -le 8
++ cat /var/folders/4l/p3g0l0bn0bqdsrnwx9q1rwth0000gn/T//obase.22478.Oc8pRp
+++ ./ort /tmp/single//request /var/folders/4l/p3g0l0bn0bqdsrnwx9q1rwth0000gn/T//atoms_22478_11_KBeWpI
++ cm='-1 2'
++ echo '* xyzfile -1 2 /var/folders/4l/p3g0l0bn0bqdsrnwx9q1rwth0000gn/T//atoms_22478_11_KBeWpI'
++ test 0 -gt 0
++ M=12
++ test 14 -eq 0 -o 12 -le 14
++ test 12 -lt 11
++ /Users/hans/Library/Orca/orca /var/folders/4l/p3g0l0bn0bqdsrnwx9q1rwth0000gn/T//input_22478_11_h99Ks6
+++ printf %06d 11
+++ jobs -pr
+++ wc -l
++ test 1 -ge 2
+++ mktemp /var/folders/4l/p3g0l0bn0bqdsrnwx9q1rwth0000gn/T//input_22478_12_XXXXXX
++ INPUT=/var/folders/4l/p3g0l0bn0bqdsrnwx9q1rwth0000gn/T//input_22478_12_UhD3Cx
+++ mktemp /var/folders/4l/p3g0l0bn0bqdsrnwx9q1rwth0000gn/T//atoms_22478_12_XXXXXX
++ ATOMS=/var/folders/4l/p3g0l0bn0bqdsrnwx9q1rwth0000gn/T//atoms_22478_12_lJv71R
++ nextmol /var/folders/4l/p3g0l0bn0bqdsrnwx9q1rwth0000gn/T//atoms_22478_12_lJv71R
++ l=1
++ read numatom
++ read comment
++ test 1 -le 10
++ read atom
++ echo 'O          0.25400        1.82820        0.10730'
++ l=2
++ test 2 -le 10
++ read atom
++ echo 'O          0.91040       -1.61330       -0.08350'
++ l=3
++ test 3 -le 10
++ read atom
++ echo 'O         -1.28850       -0.26480        1.29430'
++ l=4
++ test 4 -le 10
++ read atom
++ echo 'O          2.29280        0.19880        0.08000'
++ l=5
++ test 5 -le 10
++ read atom
++ echo 'O         -2.14100       -0.26920       -0.82580'
++ l=6
++ test 6 -le 10
++ read atom
++ echo 'C          0.03810        0.55410       -0.49290'
++ l=7
++ test 7 -le 10
++ read atom
++ echo 'C          1.18920       -0.38230       -0.12920'
++ l=8
++ test 8 -le 10
++ read atom
++ echo 'C         -1.25510       -0.05150        0.04980'
++ l=9
++ test 9 -le 10
++ read atom
++ echo 'H          0.00870        0.67750       -1.58060'
++ l=10
++ test 10 -le 10
++ read atom
++ echo 'H         -0.48980        2.39920       -0.15040'
++ l=11
++ test 11 -le 10
++ cat /var/folders/4l/p3g0l0bn0bqdsrnwx9q1rwth0000gn/T//obase.22478.Oc8pRp
+++ ./ort /tmp/single//request /var/folders/4l/p3g0l0bn0bqdsrnwx9q1rwth0000gn/T//atoms_22478_12_lJv71R
++ cm='-1 2'
++ echo '* xyzfile -1 2 /var/folders/4l/p3g0l0bn0bqdsrnwx9q1rwth0000gn/T//atoms_22478_12_lJv71R'
++ test 0 -gt 0
++ M=13
++ test 14 -eq 0 -o 13 -le 14
++ test 13 -lt 11
++ /Users/hans/Library/Orca/orca /var/folders/4l/p3g0l0bn0bqdsrnwx9q1rwth0000gn/T//input_22478_12_UhD3Cx
+++ printf %06d 12
+++ jobs -pr
+++ wc -l
++ test 2 -ge 2
++ jobs -pr
+22498
+22507
++ sleep 10
+++ jobs -pr
+++ wc -l
++ test 2 -ge 2
++ jobs -pr
+22498
+22507
++ sleep 10
+++ jobs -pr
+++ wc -l
++ test 1 -ge 2
+++ mktemp /var/folders/4l/p3g0l0bn0bqdsrnwx9q1rwth0000gn/T//input_22478_13_XXXXXX
++ INPUT=/var/folders/4l/p3g0l0bn0bqdsrnwx9q1rwth0000gn/T//input_22478_13_B5uVMG
+++ mktemp /var/folders/4l/p3g0l0bn0bqdsrnwx9q1rwth0000gn/T//atoms_22478_13_XXXXXX
++ ATOMS=/var/folders/4l/p3g0l0bn0bqdsrnwx9q1rwth0000gn/T//atoms_22478_13_4iimhC
++ nextmol /var/folders/4l/p3g0l0bn0bqdsrnwx9q1rwth0000gn/T//atoms_22478_13_4iimhC
++ l=1
++ read numatom
++ read comment
++ test 1 -le 16
++ read atom
++ echo 'O          2.48480        0.00000        0.00000'
++ l=2
++ test 2 -le 16
++ read atom
++ echo 'O          1.09280        2.39480        0.00020'
++ l=3
++ test 3 -le 16
++ read atom
++ echo 'O          1.09290       -2.39470        0.00010'
++ l=4
++ test 4 -le 16
++ read atom
++ echo 'O         -3.02950       -0.00010        0.00010'
++ l=5
++ test 5 -le 16
++ read atom
++ echo 'C          1.12130        0.00000       -0.00010'
++ l=6
++ test 6 -le 16
++ read atom
++ echo 'C          0.42390        1.20790       -0.00020'
++ l=7
++ test 7 -le 16
++ read atom
++ echo 'C          0.42400       -1.20790        0.00000'
++ l=8
++ test 8 -le 16
++ read atom
++ echo 'C         -1.66840        0.00000        0.00000'
++ l=9
++ test 9 -le 16
++ read atom
++ echo 'C         -0.97100        1.20800        0.00000'
++ l=10
++ test 10 -le 16
++ read atom
++ echo 'C         -0.97090       -1.20800        0.00000'
++ l=11
++ test 11 -le 16
++ read atom
++ echo 'H         -1.52180        2.14550        0.00020'
++ l=12
++ test 12 -le 16
++ read atom
++ echo 'H         -1.50860       -2.15300        0.00000'
++ l=13
++ test 13 -le 16
++ read atom
++ echo 'H          2.79180        0.92330       -0.00010'
++ l=14
++ test 14 -le 16
++ read atom
++ echo 'H          0.44760        3.12250        0.00030'
++ l=15
++ test 15 -le 16
++ read atom
++ echo 'H          2.04770       -2.20760        0.00020'
++ l=16
++ test 16 -le 16
++ read atom
++ echo 'H         -3.34480       -0.92020        0.00000'
++ l=17
++ test 17 -le 16
++ cat /var/folders/4l/p3g0l0bn0bqdsrnwx9q1rwth0000gn/T//obase.22478.Oc8pRp
+++ ./ort /tmp/single//request /var/folders/4l/p3g0l0bn0bqdsrnwx9q1rwth0000gn/T//atoms_22478_13_4iimhC
++ cm='-1 2'
++ echo '* xyzfile -1 2 /var/folders/4l/p3g0l0bn0bqdsrnwx9q1rwth0000gn/T//atoms_22478_13_4iimhC'
++ test 0 -gt 0
++ M=14
++ test 14 -eq 0 -o 14 -le 14
++ test 14 -lt 11
++ /Users/hans/Library/Orca/orca /var/folders/4l/p3g0l0bn0bqdsrnwx9q1rwth0000gn/T//input_22478_13_B5uVMG
+++ printf %06d 13
+++ jobs -pr
+++ wc -l
++ test 2 -ge 2
++ jobs -pr
+22507
+22530
++ sleep 10
+++ jobs -pr
+++ wc -l
++ test 2 -ge 2
++ jobs -pr
+22507
+22530
++ sleep 10
+++ jobs -pr
+++ wc -l
++ test 2 -ge 2
++ jobs -pr
+22507
+22530
++ sleep 10
+++ jobs -pr
+++ wc -l
++ test 2 -ge 2
++ jobs -pr
+22507
+22530
++ sleep 10
+++ jobs -pr
+++ wc -l
++ test 2 -ge 2
++ jobs -pr
+22507
+22530
++ sleep 10
+++ jobs -pr
+++ wc -l
++ test 2 -ge 2
++ jobs -pr
+22507
+22530
++ sleep 10
+
+
+
+++ jobs -pr
+++ wc -l
++ test 1 -ge 2
+++ mktemp /var/folders/4l/p3g0l0bn0bqdsrnwx9q1rwth0000gn/T//input_22478_14_XXXXXX
++ INPUT=/var/folders/4l/p3g0l0bn0bqdsrnwx9q1rwth0000gn/T//input_22478_14_Ws7bex
+++ mktemp /var/folders/4l/p3g0l0bn0bqdsrnwx9q1rwth0000gn/T//atoms_22478_14_XXXXXX
++ ATOMS=/var/folders/4l/p3g0l0bn0bqdsrnwx9q1rwth0000gn/T//atoms_22478_14_L3eVsi
++ nextmol /var/folders/4l/p3g0l0bn0bqdsrnwx9q1rwth0000gn/T//atoms_22478_14_L3eVsi
++ l=1
++ read numatom
++ read comment
++ test 1 -le 12
++ read atom
++ echo 'Cl         1.83580       -2.09070       -0.00070'
++ l=2
++ test 2 -le 12
++ read atom
++ echo 'Cl         2.80460        0.99730        0.00030'
++ l=3
++ test 3 -le 12
++ read atom
++ echo 'Cl        -3.26980       -0.42440       -0.00030'
++ l=4
++ test 4 -le 12
++ read atom
++ echo 'C          0.71520       -0.77420        0.00050'
++ l=5
++ test 5 -le 12
++ read atom
++ echo 'C          1.13290        0.55660       -0.00010'
++ l=6
++ test 6 -le 12
++ read atom
++ echo 'C         -0.64610       -1.07790        0.00070'
++ l=7
++ test 7 -le 12
++ read atom
++ echo 'C         -1.58980       -0.05070        0.00030'
++ l=8
++ test 8 -le 12
++ read atom
++ echo 'C          0.18920        1.58390       -0.00030'
++ l=9
++ test 9 -le 12
++ read atom
++ echo 'C         -1.17210        1.28010       -0.00020'
++ l=10
++ test 10 -le 12
++ read atom
++ echo 'H         -0.97510       -2.11500        0.00080'
++ l=11
++ test 11 -le 12
++ read atom
++ echo 'H          0.49700        2.62650       -0.00060'
++ l=12
++ test 12 -le 12
++ read atom
++ echo 'H         -1.89640        2.09080       -0.00060'
++ l=13
++ test 13 -le 12
++ cat /var/folders/4l/p3g0l0bn0bqdsrnwx9q1rwth0000gn/T//obase.22478.Oc8pRp
+++ ./ort /tmp/single//request /var/folders/4l/p3g0l0bn0bqdsrnwx9q1rwth0000gn/T//atoms_22478_14_L3eVsi
++ cm='-1 2'
++ echo '* xyzfile -1 2 /var/folders/4l/p3g0l0bn0bqdsrnwx9q1rwth0000gn/T//atoms_22478_14_L3eVsi'
++ /Users/hans/Library/Orca/orca /var/folders/4l/p3g0l0bn0bqdsrnwx9q1rwth0000gn/T//input_22478_14_Ws7bex
++ test 0 -gt 0
++ M=15
++ test 14 -eq 0 -o 15 -le 14
++ wait
+++ printf %06d 14
++ OUTPUT=/tmp/single//output
++ REPORT=/tmp/single//report
++ ./ori /tmp/single/
++ test 0 -gt 0
++ exit 0
++ rm -f /var/folders/4l/p3g0l0bn0bqdsrnwx9q1rwth0000gn/T//obase.22478.Oc8pRp /var/folders/4l/p3g0l0bn0bqdsrnwx9q1rwth0000gn/T//input_22478_11_h99Ks6 /var/folders/4l/p3g0l0bn0bqdsrnwx9q1rwth0000gn/T//input_22478_11_h99Ks6.gbw /var/folders/4l/p3g0l0bn0bqdsrnwx9q1rwth0000gn/T//input_22478_11_h99Ks6.prop /var/folders/4l/p3g0l0bn0bqdsrnwx9q1rwth0000gn/T//input_22478_12_UhD3Cx /var/folders/4l/p3g0l0bn0bqdsrnwx9q1rwth0000gn/T//input_22478_12_UhD3Cx.gbw /var/folders/4l/p3g0l0bn0bqdsrnwx9q1rwth0000gn/T//input_22478_12_UhD3Cx.prop /var/folders/4l/p3g0l0bn0bqdsrnwx9q1rwth0000gn/T//input_22478_13_B5uVMG /var/folders/4l/p3g0l0bn0bqdsrnwx9q1rwth0000gn/T//input_22478_13_B5uVMG.gbw /var/folders/4l/p3g0l0bn0bqdsrnwx9q1rwth0000gn/T//input_22478_13_B5uVMG.prop /var/folders/4l/p3g0l0bn0bqdsrnwx9q1rwth0000gn/T//input_22478_14_Ws7bex /var/folders/4l/p3g0l0bn0bqdsrnwx9q1rwth0000gn/T//input_22478_14_Ws7bex.gbw /var/folders/4l/p3g0l0bn0bqdsrnwx9q1rwth0000gn/T//input_22478_14_Ws7bex.prop /var/folders/4l/p3g0l0bn0bqdsrnwx9q1rwth0000gn/T//atoms_22478_11_KBeWpI /var/folders/4l/p3g0l0bn0bqdsrnwx9q1rwth0000gn/T//atoms_22478_12_lJv71R /var/folders/4l/p3g0l0bn0bqdsrnwx9q1rwth0000gn/T//atoms_22478_13_4iimhC /var/folders/4l/p3g0l0bn0bqdsrnwx9q1rwth0000gn/T//atoms_22478_14_L3eVsi
+hans@fitbook:vms$ 
+hans@fitbook:vms$ 
+hans@fitbook:vms$ 
+hans@fitbook:vms$ exit
+
+Script done on Mon Apr 30 09:40:33 2018

@@ -1,0 +1,185 @@
+#!/bin/sh
+
+err() {
+	echo $@ >&2
+}
+
+fatal() {
+	err $@
+	exit 1
+}
+
+usage() {
+	test $# -gt 0 && err $@
+	err "$0 [-h] [-a] [-d] [-f num] [-l num] [-t dir] [-j num] [-q] [-w] db request outdir"
+	exit 1
+}
+
+# Read the next molecule from stdin
+# just to seek over it in the database
+skipmol() {
+	l=1
+	read numatom || return 1
+	read comment || return 1
+	while test $l -le $numatom; do read atom ; l=$((l+1)) ; done
+}
+
+# Read the next molecule from stdin
+# and save the atoms in a given file
+nextmol() {
+	l=1
+	read numatom || return 1
+	read comment || return 1
+	while test $l -le $numatom; do
+		read atom
+		echo "$atom"
+		l=$((l+1))
+	done > $1
+}
+
+# Check whether variable is positive integer
+ispint() {
+	echo "$1" | grep -Eq '^[1-9]+[0-9]*$' > /dev/null 2>&1
+	return $?
+}
+
+# The defaults
+O=0
+M=1
+F=1
+L=0
+A=0
+D=0
+J=1
+
+# Parse CMD line
+while getopts "adf:hj:l:t:wq" opt; do
+	case $opt in
+		a)
+			A=1
+			O=$((O+1))
+			;;
+		d)
+			D=1
+			O=$((O+1))
+ 			;;
+		f)
+			F=$OPTARG
+			O=$((O+2))
+			;;
+		h)
+			usage
+			;;
+		j)
+			J=$OPTARG
+			O=$((O+2))
+			;;
+                l)
+			L=$OPTARG
+			O=$((O+2))
+                        ;;
+                t)
+                        TEMPDIR=$OPTARG
+			O=$((O+2))
+                        ;;
+                q)
+			Q="-q"
+			O=$((O+1))
+                        ;;
+	esac
+done
+
+# Check switches
+test $F -ge 1  || fatal "-f needs to be a positive integer"
+test $L -ge 0  || fatal "-l needs to be a positive integer"
+test $L -gt 0 -a $F -gt $L && fatal "first > last: $F > $L"
+
+shift $O
+test $# -ne 3 && usage
+
+MOLECDB=$1
+REQUEST=$2
+SAVEDIR=$3
+
+# Check files and directories
+test -f $MOLECDB -a -r $MOLECDB || fatal Database $MOLECDB not readable
+test -f $REQUEST -a -r $REQUEST || fatal Request  $REQUEST not readable
+
+test -e $SAVEDIR/input   && fatal $SAVEDIR already contains an input
+test -e $SAVEDIR/request && fatal $SAVEDIR already contains a request
+test -d $SAVEDIR   || mkdir -p $SAVEDIR || fatal Cannot create $SAVEDIR
+touch $SAVEDIR/.$$ || fatal "Cannot create files in $SAVEDIR"
+rm -f $SAVEDIR/.$$ || fatal "Cannot delete files in $SAVEDIR"
+
+test -z $TEMPDIR && TEMPDIR=$TMPDIR
+test -z $TEMPDIR && TEMPDIR="/tmp"
+test -d $TEMPDIR || mkdir -p $TEMPDIR || fatal "Cannot create $TEMPDIR"
+touch $TEMPDIR/.$$ || fatal "Cannot create files in $TEMPDIR"
+rm -f $TEMPDIR/.$$ || fatal "Cannot delete files in $TEMPDIR"
+
+# Check binares
+export PATH=$(dirname $0):$PATH
+ORC=$(which orca) || fatal "orca not found"
+ORT=$(which ort)  || fatal "ort not found"
+ORI=$(which ori)  || fatal "ori not found"
+
+# Common temp files
+OBASE=$(mktemp $TEMPDIR/obase.$$.XXXXXX)
+
+# Clean up
+trap 'rm -f $OBASE $TEMPDIR/input_$$_*_* $TEMPDIR/atoms_$$_*_*' EXIT
+trap 'jobs -p | xargs kill ; exit 1 ;' TERM INT
+
+# Parse the request
+$ORT $REQUEST > $OBASE || fatal Cannot parse $REQUEST
+
+# Copy input files
+cp $REQUEST $SAVEDIR/request   && REQUEST=$SAVEDIR/request
+cp $MOLECDB $SAVEDIR/input.xyz && MOLECDB=$SAVEDIR/input.xyz
+
+# Run the ORCA jobs
+while test $L -eq 0 -o $M -le $L ; do
+
+	# Skip to the ${F}irst molecule
+	test $M -lt $F && { skipmol && M=$((M+1)) && continue ; }
+
+	# Wait for an available job slot
+	while test `jobs -pr | wc -l` -ge $J; do sleep 10; done
+
+	# Create job specific temporary files
+	INPUT=$(mktemp "${TEMPDIR}/input_$$_$M"_XXXXXX)
+	ATOMS=$(mktemp "${TEMPDIR}/atoms_$$_$M"_XXXXXX)
+
+	# Load next molecule
+	nextmol $ATOMS || break
+
+	# Calculate charge and multiplicity
+	{
+	cat $OBASE
+	cm=$($ORT $REQUEST $ATOMS) || fatal "Cannot compute C&M for molecule $M"
+	echo "* xyzfile $cm $ATOMS"
+	} > $INPUT
+
+	# Run the actual ORCA calculation
+	$ORC $INPUT > $SAVEDIR/molecule.$(printf %06d $M) 2>&1 &
+
+	M=$((M+1))
+
+done < $MOLECDB
+
+# Wait for all child processes
+wait || { err "Could not wait for " ; jobs -p ; }
+
+# Interpret the results
+OUTPUT=$SAVEDIR/output
+REPORT=$SAVEDIR/report
+$ORI $Q $SAVEDIR > $OUTPUT 2> $REPORT || err "$ORI failed processing $SAVEDIR"
+
+# Archive and delete
+test "$A" -gt 0 && {
+	TARBALL="$HOME/vms-$(date +%Y%m%d%H%M).tar"
+	tar cf $TARBALL $SAVEDIR 2> /dev/null && test "$D" && rm -rf $SAVEDIR
+	echo An archive has been created in $TARBALL
+}
+
+exit 0

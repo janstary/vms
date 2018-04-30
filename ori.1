@@ -1,0 +1,55 @@
+.Dd April 29, 2018
+.Dt ORI 1
+.Os
+.Sh NAME
+.Nm ori
+.Nd ORCA result interpreter
+.Sh SYNOPSIS
+.Nm
+.Op Fl q
+.Ar orcadir
+.Sh DESCRIPTION
+.Nm
+is a companion to
+.Xr vms 1 .
+It reads the outputs of ORCA computations stored in
+.Ar orcadir
+and interprets them according to the user's request,
+which is a file named
+.Pa request
+in
+.Ar orcadir .
+The interpretation is done by selecting the relevant lines from each
+.Pa molecule.*
+file in
+.Ar orcadir
+and applying the request-specific logic.
+.Pp
+The format of the output depends on the job specified in
+.Ar request .
+For the
+.Ic excited
+job (computing excited states to figure out absorption of light),
+the output of
+.Nm
+consists of lines of the form
+.Sq Va id Va eval ,
+where
+.Va id
+is the molecule's number in the original database, and
+.Va eval
+is a completely arbitrary evaluation of how much the molecule satisfies
+the desired criteria. The  number particulars of computing eval are not
+documented here, but a number closer to 1.0 means a better fit,
+closer to 0.0 means worse.
+.Pp
+Use flag
+.Op Fl q
+to suppress warnings and provide less verbose output.
+.Sh SEE ALSO
+.Xr ort 1 ,
+.Xr vms 1
+.Sh AUTHORS
+.An Jonatan Matějka Aq Mt jonatan1024@gmail.com
+.An Štěpán Sršeň Aq Mt srsen.stepan@gmail.com
+.An Jan Starý Aq Mt hans@stare.cz

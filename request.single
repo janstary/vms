@@ -1,0 +1,9 @@
+# General mandatory directives
+job     single
+method  BP86
+
+# General optional directives
+basis   def2-SV(P)
+memory  2048
+multi   3 2
+charge  -1

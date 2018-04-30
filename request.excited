@@ -1,0 +1,25 @@
+# General mandatory directives
+job	excited
+method	BP86
+
+# General optional directives
+basis	def2-SV(P)
+memory	2048
+multi	3 2
+charge	-1
+
+# Job specific mandatory directives
+nroots	10
+
+# Job specific optional directives
+iroot	3
+maxdim  150
+triplets
+nbest	3
+
+# Job specific optional filters
+#absorb   0 800 0.001  1.00
+#absorb 100 700 0.001  1.00 -1
+#absorb 200 600 0.002 -1.00 -2
+#absorb 200 600 0.002 -1.00 -2
+absorb 300 500 0.100  -1.00 -1

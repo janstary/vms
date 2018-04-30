@@ -1,0 +1,92 @@
+.Dd April 29, 2018
+.Dt VMS 1
+.Os
+.Sh NAME
+.Nm vms
+.Nd virtual molecule screener
+.Sh SYNOPSIS
+.Nm
+.Op Fl h
+.Op Fl a
+.Op Fl d
+.Op Fl f Ar num
+.Op Fl j Ar num
+.Op Fl l Ar num
+.Op Fl t Ar dir
+.Op Fl q
+.Ar db
+.Ar request
+.Ar outdir
+.Sh DESCRIPTION
+.Nm
+is a virtual molecule screener.
+It uses the ORCA quantum chemistry suite
+to screen a vast number of molecules
+.Dq in silico
+before choosing the ones suitable for actual lab testing.
+.Pp
+.Nm
+parses the
+.Ar request
+file, which is a text file describing the user's requests,
+translates the user's request into actual ORCA computations using
+.Xr ort 1 ,
+and submits them to ORCA
+along with each molecule described in
+.Ar db ,
+which is a XYZ database of molecules.
+The format of the request file is decribed in
+.Xr ort 1 .
+.Pp
+.Nm
+saves the ORCA outputs in
+.Ar outdir ,
+along with a copy of
+.Ar db
+under the name
+.Pa input.xyz
+and a copy of the original request under the name
+.Pa request .
+Once all the ORCA jobs have finished,
+.Nm
+calls
+.Xr ori 1
+to interpret and filter the results.
+The stdout of
+.Xr ori 1
+is saved in
+.Pa outdir/output
+and the stderr is saved in
+.Pa outdir/report .
+.Pp
+The options are as follows:
+.Pp
+.Bl -tag -width Ds -compact
+.It Fl h
+Print help and exit.
+.It Fl a
+Create an archive of the whole run.
+.It Fl d
+Delete the ORCA middle output once it has been archived.
+.It Fl f Ar num
+The first molecule to use from
+.Ar db .
+.It Fl j Ar num
+Number of parallel jobs.
+.It Fl l Ar num
+The last molecule to use from
+.Ar db .
+.It Fl q
+Be less verbose.
+.It Fl t Ar dir
+A temporary directory to use.
+.El
+.Sh EXAMPLES
+.Dl vms db.xyz request.excited /tmp/orca
+.Sh SEE ALSO
+.Xr ori 1 ,
+.Xr ort 1
+.Sh AUTHORS
+.An Jonatan Matějka Aq Mt jonatan1024@gmail.com
+.An Štěpán Sršeň Aq Mt srsen.stepan@gmail.com
+.An Jan Starý Aq Mt hans@stare.cz
