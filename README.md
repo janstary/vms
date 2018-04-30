@@ -46,7 +46,7 @@ single point calculations on the molecules. This is a test that
 `vms` basicaly works. Look into the resulting `./single` directory.
 
 The `optimize` request instructs ORCA to optimize the molecule geometry.
-Note the modified geometry in `./optimize/output`, optimized from the
+Note the geometry in `./optimize/output`, optimized from the
 naive structure of H2O and CH4 in `db.xyz`.
 
 The `excited` request instructs ORCA to compute excited states,
@@ -61,8 +61,7 @@ with wavelenghts between 300 and 500 nm, with intesity at least 0.10
 (which means, roughly, that a photon has
 at least 10% chance of being absorbed);
 the higher the absorption the better.
-
-In `./excited/report`, you will see that
+In `./excited/report` then, you will see that
 
 ```
 molecule 2 from ./excited/molecule.000002: eval 0.039725
