@@ -72,11 +72,11 @@ molecule 2 from ./excited/molecule.000002: eval 0.039725
 This means that the methan molecule, in its third excited state,
 absorbs light with a wavelength of 385 nm (violet) with an intensity of 12%,
 therefore passing the specification in the request. The molecule of water
-does not pass the filter; so `excited/output` contains only the methan.
+does not pass the filter; so `./excited/output` only contains the methan.
 
 ## documentation
 
-VMS install three binaries: `vms`, `ort` and `ori`.
+VMS installs three binaries: `vms`, `ort` and `ori`.
 Their manpages describe the details of usage,
 the format of the request files, and the structure of the output.
 
@@ -85,5 +85,5 @@ the format of the request files, and the structure of the output.
 VMS was originaly written by
 [Štěpán Sršeň](http://photox.vscht.cz/people.php?person=srsen)
 and later modified and extended by
-[Jonathan Matějka](https://github.com/jonatan1024)
+[Jonatan Matějka](https://github.com/jonatan1024)
 and Jan Starý.
